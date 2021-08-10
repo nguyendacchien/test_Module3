@@ -13,7 +13,7 @@ class updateProduct extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,26 @@ class updateProduct extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'email' => 'required |email',
+            'user_manage'=>'required',
+            'mdl' => 'required',
+            'status' => 'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'khong duoc de trong',
+            'phone.required' => 'khong duoc de trong',
+            'address.required' => 'khong duoc de trong',
+            'email.required' => 'khong duoc de trong',
+            'email.email' => 'khong dung dinh dang',
+            'user_manage.required' => 'khong duoc de trong',
+            'mdl.required' => 'khong duoc de trong',
+            'status.required' => 'khong duoc de trong',
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\createProduct;
+use App\Http\Requests\updateProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Product $product,Request $request)
+    public function store(Product $product,createProduct $request)
     {
         $product->name = $request->name;
         $product->phone = $request->phone;
@@ -78,7 +79,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(updateProduct $request,$id)
     {
         $product = Product::findOrFail($id);
         $product->name = $request->name;
